@@ -118,7 +118,7 @@
     flex-grow: 1;
   }
 
-  /* --- НОВЫЙ ЗАГОЛОВОК (В ДВЕ СТРОКИ) --- */
+  /* --- НОВЫЙ ЗАГОЛОВОК (В ТРИ СТРОКИ) --- */
   .hero-title {
     color: var(--cream);
     display: flex;
@@ -126,18 +126,29 @@
     align-items: center;
     line-height: 1.1;
     margin-bottom: 30px;
-    margin-top: 20px;
+    margin-top: 10px;
   }
 
-  /* Первая строка: САЙТ-ПРИГЛАШЕНИЕ */
+  /* Маленькая фраза сверху */
+  .hero-title .line-top {
+    font-size: clamp(16px, 2.5vw, 28px);
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    opacity: 0.9;
+  }
+
+  /* Главная надпись */
   .hero-title .line-main {
-    font-size: clamp(45px, 8.5vw, 120px); /* Уменьшил максимальный размер, чтобы влезло в одну строку */
+    font-size: clamp(45px, 8.5vw, 120px);
     letter-spacing: 1px;
     text-transform: uppercase;
-    white-space: nowrap; /* Запрещаем перенос строки */
+    white-space: nowrap; 
   }
 
-  /* Вторая строка: НА ВАШЕ ТОРЖЕСТВО */
+  /* Вторая строка снизу */
   .hero-title .line-bottom {
     font-size: clamp(24px, 4.5vw, 60px);
     letter-spacing: 2px;
@@ -642,8 +653,11 @@
       padding-top: 140px;
     }
     /* Адаптив для нового заголовка */
+    .hero-title .line-top {
+      font-size: 14px;
+    }
     .hero-title .line-main {
-      font-size: 38px; /* Уменьшаем на мобильных, чтобы влезло в одну строку */
+      font-size: 38px; 
     }
     .hero-title .line-bottom {
       font-size: 18px;
@@ -703,8 +717,9 @@
     <!-- Контент -->
     <div class="hero-content">
       
-      <!-- НОВЫЙ ОФОРМЛЕННЫЙ ЗАГОЛОВОК (2 строки) -->
+      <!-- НОВЫЙ ОФОРМЛЕННЫЙ ЗАГОЛОВОК (3 строки) -->
       <h1 class="hero-title">
+        <span class="line-top">Ваш праздник начинается с</span>
         <span class="line-main">Сайт-приглашение</span>
         <span class="line-bottom">На ваше торжество</span>
       </h1>
