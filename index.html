@@ -1,103 +1,708 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invite For U — Сайты-приглашения на заказ</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Invite For U — Сайты-приглашения на заказ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red-bg: #dc3522;       
+    --cream: #fcf4e8;        
+    --dark: #1a1a1a;         
+    --white: #ffffff;
+    --light-gray: #f5f5f5;
+  }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            color: #fff;
-        }
+  @font-face {
+    font-family: 'Rostov';
+    src: local('Rostov'), local('Rostov-Regular'), local('Rostov Bold');
+    font-weight: normal;
+    font-style: normal;
+  }
 
-        .card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            padding: 60px 40px;
-            max-width: 500px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-        .logo {
-            font-size: 42px;
-            font-weight: 700;
-            margin-bottom: 16px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+  body {
+    font-family: 'Rostov', 'Inter', sans-serif;
+    background-color: var(--white);
+    color: var(--dark);
+    line-height: 1.5;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
 
-        .subtitle {
-            font-size: 17px;
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.6;
-            margin-bottom: 40px;
-        }
+  h1, h2, h3, .nav-logo, .section-title {
+    text-transform: uppercase;
+    font-weight: normal; 
+  }
 
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #fff;
-            text-decoration: none;
-            padding: 16px 36px;
-            border-radius: 50px;
-            font-size: 17px;
-            font-weight: 600;
-            transition: transform 0.2s, box-shadow 0.2s;
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
-        }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
 
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 14px 40px rgba(102, 126, 234, 0.5);
-        }
+  .hero-section {
+    background-color: var(--red-bg);
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-top: 100px;
+    position: relative;
+    overflow: hidden;
+  }
 
-        .btn svg {
-            width: 22px;
-            height: 22px;
-            fill: currentColor;
-        }
+  .nav {
+    position: absolute;
+    top: 30px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 10;
+  }
+  .nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1000px;
+    padding: 0 20px;
+  }
+  .nav-logo {
+    font-size: 22px;
+    color: var(--cream);
+    letter-spacing: 1px;
+  }
+  .nav-links a {
+    color: var(--cream);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    margin-left: 20px;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+    font-family: 'Inter', sans-serif;
+  }
+  .nav-links a:hover {
+    opacity: 1;
+  }
+  .btn-nav {
+    background: var(--cream);
+    color: var(--red-bg) !important;
+    padding: 8px 20px;
+    border-radius: 30px;
+    font-weight: 700 !important;
+    opacity: 1 !important;
+  }
 
-        .footer {
-            margin-top: 40px;
-            font-size: 14px;
-            color: rgba(255, 255, 255, 0.4);
-        }
-    </style>
+  .hero-content {
+    text-align: center;
+    z-index: 2;
+    animation: fadeUp 1s ease-out;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+  }
+
+  .hero-subtitle {
+    color: var(--cream);
+    font-size: clamp(16px, 2vw, 24px);
+    font-weight: 400;
+    margin-bottom: 10px;
+    opacity: 0.9;
+    letter-spacing: 0.5px;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* ИСПРАВЛЕННЫЙ ЗАГОЛОВОК (буквы ближе) */
+  .hero-title {
+    color: var(--cream);
+    font-size: clamp(50px, 10vw, 110px); 
+    line-height: 1.15; 
+    letter-spacing: -2px; 
+    margin-bottom: 30px;
+  }
+
+  .hero-desc {
+    color: var(--cream);
+    font-size: clamp(14px, 1.5vw, 18px);
+    max-width: 600px;
+    margin: 0 auto 30px;
+    opacity: 0.85;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .btn-main {
+    display: inline-block;
+    background: var(--cream);
+    color: var(--red-bg);
+    padding: 18px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    font-family: 'Inter', sans-serif;
+  }
+  .btn-main:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .marquee-container {
+    width: 100%;
+    overflow: hidden;
+    margin-top: 40px;
+    padding: 20px 0 40px 0;
+    position: relative;
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 20px;
+    width: max-content;
+    animation: scroll 25s linear infinite;
+  }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  .mockup-mini {
+    width: 220px;
+    height: 140px;
+    background: var(--cream);
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mockup-header {
+    height: 30px;
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    gap: 5px;
+  }
+
+  .mockup-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ccc;
+  }
+
+  .mockup-content {
+    flex-grow: 1;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .mockup-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    color: var(--dark);
+    line-height: 1.2;
+    margin-bottom: 5px;
+  }
+
+  .mockup-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 8px;
+    color: #888;
+  }
+
+  .mockup-mini:nth-child(1) .mockup-content { background: #e8f4f8; }
+  .mockup-mini:nth-child(2) .mockup-content { background: #fdf5e6; }
+  .mockup-mini:nth-child(3) .mockup-content { background: #f0e6ff; }
+  .mockup-mini:nth-child(4) .mockup-content { background: #e6ffe6; }
+  .mockup-mini:nth-child(5) .mockup-content { background: #ffe6e6; }
+
+  @keyframes scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } 
+  }
+
+  .about {
+    background: var(--light-gray);
+    padding: 100px 0;
+  }
+  .about-inner {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    flex-wrap: wrap;
+  }
+  .about-content {
+    flex: 1 1 500px;
+  }
+  .about-visual {
+    flex: 1 1 300px;
+    background: var(--red-bg);
+    height: 400px;
+    border-radius: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    box-shadow: 20px 20px 0 var(--cream), 0 0 0 2px var(--red-bg);
+    transition: transform 0.4s;
+  }
+  .about-visual:hover {
+    transform: translate(-5px, -5px);
+  }
+  .about-visual span {
+    font-size: 120px;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.2));
+  }
+  .about h2 {
+    font-size: clamp(36px, 5vw, 64px);
+    margin-bottom: 20px;
+    line-height: 1.1;
+    color: var(--dark);
+    letter-spacing: 2px;
+  }
+  .about h2 span {
+    color: var(--red-bg);
+  }
+  .about p {
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    color: #444;
+    margin-bottom: 20px;
+  }
+  .domain-badge {
+    display: inline-block;
+    background: var(--white);
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-weight: 600;
+    border: 1px solid #ddd;
+    margin-top: 10px;
+    color: var(--red-bg);
+    font-family: 'Inter', sans-serif;
+  }
+
+  .services {
+    padding: 100px 0;
+  }
+  .section-title {
+    font-size: clamp(36px, 5vw, 64px);
+    margin-bottom: 50px;
+    text-align: center;
+    line-height: 1.1;
+    color: var(--dark);
+    letter-spacing: 2px;
+  }
+  .section-title span {
+    color: var(--red-bg);
+  }
+  
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    align-items: stretch;
+  }
+  .service-card {
+    background: var(--white);
+    border-radius: 30px;
+    padding: 40px 30px;
+    border: 1px solid #eee;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+  }
+  .service-card:hover {
+    border-color: var(--red-bg);
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(220, 53, 34, 0.1);
+  }
+  
+  .service-card.popular {
+    border: 2px solid var(--red-bg);
+    transform: scale(1.02);
+    z-index: 2;
+  }
+  .service-card.popular:hover {
+    transform: scale(1.02) translateY(-5px);
+  }
+  .popular-badge {
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--red-bg);
+    color: var(--white);
+    padding: 5px 20px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    text-transform: uppercase;
+  }
+
+  .service-card h3 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    text-align: center;
+    letter-spacing: 1px;
+  }
+  .service-card .price {
+    font-family: 'Inter', sans-serif;
+    font-size: 32px;
+    font-weight: 900;
+    color: var(--red-bg);
+    margin-bottom: 25px;
+    text-align: center;
+  }
+  .service-card ul {
+    list-style: none;
+    margin-bottom: 30px;
+    flex-grow: 1;
+    font-family: 'Inter', sans-serif;
+  }
+  .service-card ul li {
+    margin-bottom: 12px;
+    font-size: 15px;
+    color: var(--dark);
+    padding-left: 25px;
+    position: relative;
+    font-weight: 500;
+  }
+  .service-card ul li::before {
+    content: '♥';
+    position: absolute;
+    left: 0;
+    color: var(--red-bg);
+    font-size: 14px;
+  }
+  .service-card ul li.disabled {
+    color: #ccc;
+    text-decoration: line-through;
+  }
+  .service-card ul li.disabled::before {
+    color: #ccc;
+  }
+  .service-card .btn {
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: var(--light-gray);
+    color: var(--dark);
+    padding: 15px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: background 0.3s, color 0.3s;
+    font-family: 'Inter', sans-serif;
+  }
+  .service-card .btn:hover {
+    background: var(--red-bg);
+    color: var(--white);
+  }
+
+  .faq {
+    background: var(--light-gray);
+    padding: 100px 0;
+  }
+  .faq-item {
+    background: var(--white);
+    border-radius: 20px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+  }
+  .faq-question {
+    padding: 25px 30px;
+    font-weight: 700;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background 0.3s;
+  }
+  .faq-question:hover {
+    background: #fafafa;
+  }
+  .faq-question::after {
+    content: '+';
+    font-size: 24px;
+    color: var(--red-bg);
+    transition: transform 0.3s;
+    font-weight: 400;
+  }
+  .faq-item.active .faq-question::after {
+    transform: rotate(45deg);
+  }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.3s;
+    padding: 0 30px;
+    color: #555;
+    font-size: 16px;
+  }
+  .faq-item.active .faq-answer {
+    padding: 0 30px 25px;
+    max-height: 500px;
+  }
+
+  footer {
+    background: var(--red-bg);
+    color: var(--cream);
+    padding: 80px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  footer h2 {
+    font-size: clamp(40px, 6vw, 80px);
+    margin-bottom: 20px;
+    line-height: 1.1;
+    letter-spacing: 3px;
+  }
+  footer p {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    margin-bottom: 40px;
+    opacity: 0.9;
+  }
+  .footer-btns .btn-main {
+    background: var(--cream);
+    color: var(--red-bg);
+  }
+
+  @media (max-width: 768px) {
+    .nav-inner {
+      flex-direction: column;
+      gap: 15px;
+    }
+    .hero-section {
+      padding-top: 140px;
+    }
+    .hero-title {
+      font-size: 55px;
+      letter-spacing: -1px;
+    }
+    .about-inner {
+      flex-direction: column-reverse;
+      text-align: center;
+    }
+    .about-visual {
+      width: 100%;
+      height: 300px;
+    }
+    .service-card.popular {
+      transform: none;
+    }
+    .marquee-track {
+      animation-duration: 15s;
+    }
+  }
+</style>
 </head>
 <body>
-    <div class="card">
-        <div class="logo">Invite For U</div>
-        <p class="subtitle">
-            Создаю уникальные сайты-приглашения<br>
-            для ваших особенных событий
-        </p>
-        <a href="https://t.me/fu1be" target="_blank" rel="noopener" class="btn">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
-            </svg>
-            Написать в Telegram
-        </a>
-        <div class="footer">© Invite For U</div>
+
+  <section class="hero-section">
+    <nav class="nav">
+      <div class="nav-inner">
+        <div class="nav-logo">Invite For U</div>
+        <div class="nav-links">
+          <a href="#services">Пакеты</a>
+          <a href="#faq">FAQ</a>
+          <a href="https://t.me/fu1be" target="_blank" class="btn-nav">Заказать</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="hero-content">
+      <div class="hero-subtitle">а может быть...</div>
+      <h1 class="hero-title">Invite<br>For U</h1>
+      <p class="hero-desc">Создаю уникальные сайты-приглашения для ваших особенных событий. Свадьбы, дни рождения, концерты.</p>
+      <a href="https://t.me/fu1be" target="_blank" class="btn-main">Создать приглашение</a>
     </div>
+
+    <div class="marquee-container">
+      <div class="marquee-track">
+        <div class="mockup-mini">
+          <div class="mockup-header"><div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div></div>
+          <div class="mockup-content"><div class="mockup-title">СВАДЬБА<br>АННЫ И МИШИ</div><div class="mockup-sub">12.08.2026 • Москва</div></div>
+        </div>
+        <div class="mockup-mini">
+          <div class="mockup-header"><div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div></div>
+          <div class="mockup-content"><div class="mockup-title">ДЕНЬ<br>РОЖДЕНИЯ</div><div class="mockup-sub">25 лет • Санкт-Петербург</div></div>
+        </div>
+        <div class="mockup-mini">
+          <div class="mockup-header"><div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div></div>
+          <div class="mockup-content"><div class="mockup-title">КОНЦЕРТ<br>ГРУППЫ</div><div class="mockup-sub">15.09 • Клуб "Космос"</div></div>
+        </div>
+        <div class="mockup-mini">
+          <div class="mockup-header"><div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div></div>
+          <div class="mockup-content"><div class="mockup-title">ВЫПУСКНОЙ<br>2026</div><div class="mockup-sub">Школа №1234</div></div>
+        </div>
+        <div class="mockup-mini">
+          <div class="mockup-header"><div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div></div>
+          <div class="mockup-content"><div class="mockup-title">CORPORATE<br>PARTY</div><div class="mockup-sub">Новый год • Офис</div></div>
+        </div>
+        <!-- Дубли -->
+        <div class="mockup-mini">
+          <div class="mockup-header"><div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div></div>
+          <div class="mockup-content"><div class="mockup-title">СВАДЬБА<br>АННЫ И МИШИ</div><div class="mockup-sub">12.08.2026 • Москва</div></div>
+        </div>
+        <div class="mockup-mini">
+          <div class="mockup-header"><div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div></div>
+          <div class="mockup-content"><div class="mockup-title">ДЕНЬ<br>РОЖДЕНИЯ</div><div class="mockup-sub">25 лет • Санкт-Петербург</div></div>
+        </div>
+        <div class="mockup-mini">
+          <div class="mockup-header"><div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div></div>
+          <div class="mockup-content"><div class="mockup-title">КОНЦЕРТ<br>ГРУППЫ</div><div class="mockup-sub">15.09 • Клуб "Космос"</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <div class="container about-inner">
+      <div class="about-content">
+        <h2>INVITE <span>FOR U</span></h2>
+        <p>Меня зовут Егор. «Invite For U» — это не просто название, это мой подход. Я делаю приглашения, которые персонализированы под вас и ваших гостей.</p>
+        <p>Гости смогут ответить на анкету, а ответ моментально придет вам в Telegram-бот. Больше не нужно обзванивать всех и спрашивать: «Ты придешь?».</p>
+        <div class="domain-badge">Ваш сайт будет жить на: <b>имя.inviteforu.ru</b></div>
+      </div>
+      <div class="about-visual"><span>📱</span></div>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <div class="container">
+      <h2 class="section-title">ВЫБЕРИ <span>ПАКЕТ</span></h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <h3>Пакет 1</h3>
+          <div class="price">4000 ₽</div>
+          <ul>
+            <li>Дата, время, место</li>
+            <li>Анкета гостя</li>
+            <li>Ваше фото (или несколько)</li>
+            <li>Дресс-код</li>
+            <li>Анимация</li>
+            <li>Адаптация под телефон и ПК</li>
+            <li class="disabled">Таймер до начала</li>
+            <li class="disabled">Интерактивная карта</li>
+            <li class="disabled">Блок детали и пожелания</li>
+          </ul>
+          <a href="https://t.me/fu1be" target="_blank" class="btn">Выбрать</a>
+        </div>
+        <div class="service-card popular">
+          <div class="popular-badge">Хит продаж</div>
+          <h3>Пакет 2</h3>
+          <div class="price">5500 ₽</div>
+          <ul>
+            <li>Дата, время, место</li>
+            <li>Анкета гостя</li>
+            <li>Ваше фото (или несколько)</li>
+            <li>Дресс-код</li>
+            <li>Анимация</li>
+            <li>Адаптация под телефон и ПК</li>
+            <li>Таймер до начала торжества</li>
+            <li>Интерактивная карта Яндекс</li>
+            <li>Блок детали и пожелания</li>
+          </ul>
+          <a href="https://t.me/fu1be" target="_blank" class="btn">Выбрать</a>
+        </div>
+        <div class="service-card">
+          <h3>Пакет 3</h3>
+          <div class="price">По запросу</div>
+          <ul>
+            <li><b>Всё из Пакета 2</b></li>
+            <li>Индивидуальный дизайн</li>
+            <li>Любые блоки (музыка, видео)</li>
+            <li>Замена шрифтов и цветов</li>
+            <li>Вырезка фото</li>
+            <li>Вступительный экран</li>
+          </ul>
+          <a href="https://t.me/fu1be" target="_blank" class="btn">Обсудить</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq" id="faq">
+    <div class="container">
+      <h2 class="section-title">ЧАСТЫЕ <span>ВОПРОСЫ</span></h2>
+      <div class="faq-item">
+        <div class="faq-question">Как работает анкета гостя?</div>
+        <div class="faq-answer">Гость заходит на сайт, заполняет анкету (сможет ли он прийти, предпочтения по напиткам и т.д.), а ответ моментально поступает вам в бот Телеграм. Это очень удобно для подсчета гостей.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Где будет находиться сайт?</div>
+        <div class="faq-answer">Сайт будет работать на моем домене <b>inviteforu.ru</b>. Ссылка для гостей будет выглядеть так: <b>имена.inviteforu.ru</b>. Сайт будет работать 1 год.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Как происходит оплата и сроки?</div>
+        <div class="faq-answer">Предоплата 50%, остаток по факту. Создание занимает от 2 до 5 дней (в зависимости от пакета) с момента получения всей информации.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">Можно ли что-то поменять?</div>
+        <div class="faq-answer">Да, в стоимость входит изменение текста, фото, дресс-кода и вопросов в анкете. Если нужны сложные изменения (индивидуальный дизайн, музыка, видео) — это обсуждается отдельно в Пакете 3.</div>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contacts">
+    <div class="container">
+      <h2>ЖДУ ВАС!</h2>
+      <p>Напишите мне, чтобы обсудить ваш праздник.</p>
+      <div class="footer-btns">
+        <a href="https://t.me/fu1be" target="_blank" class="btn-main">Написать в Telegram</a>
+      </div>
+    </div>
+  </footer>
+
+<script>
+  document.querySelectorAll('.faq-question').forEach(item => {
+    item.addEventListener('click', () => {
+      const parent = item.parentElement;
+      document.querySelectorAll('.faq-item').forEach(el => {
+        if (el !== parent) el.classList.remove('active');
+      });
+      parent.classList.toggle('active');
+    });
+  });
+</script>
 </body>
 </html>
