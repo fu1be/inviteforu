@@ -39,8 +39,8 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  h1, h2, h3, .nav-logo, .section-title {
-    text-transform: uppercase;
+  /* Убрали глобальный uppercase для заголовков, чтобы лучше управлять текстом */
+  h1, h2, h3, .nav-logo {
     font-weight: normal; 
   }
 
@@ -83,6 +83,7 @@
     font-size: 22px;
     color: var(--cream);
     letter-spacing: 1px;
+    text-transform: uppercase;
   }
   .nav-links a {
     color: var(--cream);
@@ -122,18 +123,57 @@
     color: var(--cream);
     font-size: clamp(16px, 2vw, 24px);
     font-weight: 400;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     opacity: 0.9;
     letter-spacing: 0.5px;
     font-family: 'Inter', sans-serif;
   }
 
+  /* --- НОВЫЙ КРАСИВЫЙ ЗАГОЛОВОК --- */
   .hero-title {
     color: var(--cream);
-    font-size: clamp(50px, 10vw, 110px); 
-    line-height: 1.15; 
-    letter-spacing: -2px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.05;
     margin-bottom: 30px;
+  }
+
+  .hero-title .line-top {
+    font-size: clamp(24px, 3.5vw, 42px);
+    letter-spacing: 3px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    font-family: 'Inter', sans-serif; /* Для верхней строки используем Inter, чтобы было аккуратно */
+    font-weight: 500;
+  }
+
+  .hero-title .line-main {
+    font-size: clamp(60px, 11vw, 140px);
+    letter-spacing: -1px;
+    text-transform: uppercase;
+  }
+
+  .hero-title .line-bottom {
+    font-size: clamp(30px, 5.5vw, 70px);
+    letter-spacing: 0px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 5px;
+  }
+
+  /* Красивое подчеркивание для последней строки */
+  .hero-title .line-bottom::before,
+  .hero-title .line-bottom::after {
+    content: '';
+    display: block;
+    width: clamp(30px, 6vw, 100px);
+    height: 3px;
+    background-color: var(--cream);
+    opacity: 0.7;
   }
 
   .hero-desc {
@@ -270,7 +310,6 @@
     flex: 1 1 500px;
   }
 
-  /* Стили для красивого текста */
   .about-content p {
     font-family: 'Inter', sans-serif;
     font-size: 17px;
@@ -332,7 +371,6 @@
     animation-play-state: paused; 
   }
 
-  /* Бровь (среднее значение 19px) */
   .phone-mockup::before {
     content: '';
     position: absolute;
@@ -346,7 +384,6 @@
     z-index: 10;
   }
 
-  /* Блик */
   .phone-mockup::after {
     content: '';
     position: absolute;
@@ -387,6 +424,7 @@
     line-height: 1.1;
     color: var(--dark);
     letter-spacing: 2px;
+    text-transform: uppercase;
   }
   .about h2 span {
     color: var(--red-bg);
@@ -415,6 +453,7 @@
     line-height: 1.1;
     color: var(--dark);
     letter-spacing: 2px;
+    text-transform: uppercase;
   }
   .section-title span {
     color: var(--red-bg);
@@ -471,6 +510,7 @@
     margin-bottom: 10px;
     text-align: center;
     letter-spacing: 1px;
+    text-transform: uppercase;
   }
   .service-card .price {
     font-family: 'Inter', sans-serif;
@@ -551,7 +591,6 @@
     transition: color 0.3s;
   }
   
-  /* Активное состояние вопроса: красный текст */
   .faq-item.active .faq-question {
     color: var(--red-bg);
   }
@@ -577,9 +616,8 @@
     line-height: 1.6;
   }
   
-  /* Симметричный отступ при открытии */
   .faq-item.active .faq-answer {
-    padding: 10px 30px 25px 30px; /* 10px сверху для симметрии */
+    padding: 10px 30px 25px 30px; 
     max-height: 500px;
   }
 
@@ -597,6 +635,7 @@
     margin-bottom: 20px;
     line-height: 1.1;
     letter-spacing: 3px;
+    text-transform: uppercase;
   }
   footer p {
     font-family: 'Inter', sans-serif;
@@ -618,10 +657,22 @@
     .hero-section {
       padding-top: 140px;
     }
-    .hero-title {
-      font-size: 55px;
-      letter-spacing: -1px;
+    /* Адаптив для нового заголовка */
+    .hero-title .line-top {
+      font-size: 18px;
     }
+    .hero-title .line-main {
+      font-size: 60px;
+    }
+    .hero-title .line-bottom {
+      font-size: 24px;
+      gap: 10px;
+    }
+    .hero-title .line-bottom::before,
+    .hero-title .line-bottom::after {
+      width: 20px;
+    }
+    
     .about-inner {
       flex-direction: column-reverse;
       text-align: center;
@@ -671,8 +722,15 @@
     <!-- Контент -->
     <div class="hero-content">
       <div class="hero-subtitle">а может быть...</div>
-      <h1 class="hero-title">Invite<br>For U</h1>
-      <p class="hero-desc">Создаю уникальные сайты-приглашения для ваших особенных событий. Свадьбы, дни рождения, концерты.</p>
+      
+      <!-- НОВЫЙ ОФОРМЛЕННЫЙ ЗАГОЛОВОК -->
+      <h1 class="hero-title">
+        <span class="line-top">Создаю</span>
+        <span class="line-main">Сайт-приглашение</span>
+        <span class="line-bottom">На ваше торжество</span>
+      </h1>
+
+      <p class="hero-desc">Уникальные сайты для свадеб, дней рождения и концертов. Гости смогут ответить на анкету, а вы получите все ответы в удобной Google Таблице.</p>
       <a href="https://t.me/fu1be" target="_blank" class="btn-main">Создать приглашение</a>
     </div>
 
@@ -778,7 +836,6 @@
             <li class="disabled">Интерактивная карта</li>
             <li class="disabled">Блок детали и пожелания</li>
           </ul>
-          <!-- Автоматический текст для Телеграм -->
           <a href="https://t.me/fu1be?text=Здравствуйте,%20Егор!%20Хочу%20заказать%20сайт-приглашение.%20Меня%20интересует%20Пакет%201%20(3000%20руб)." target="_blank" class="btn">Выбрать</a>
         </div>
 
@@ -798,7 +855,6 @@
             <li>Интерактивная карта Яндекс</li>
             <li>Блок детали и пожелания</li>
           </ul>
-          <!-- Автоматический текст для Телеграм -->
           <a href="https://t.me/fu1be?text=Здравствуйте,%20Егор!%20Хочу%20заказать%20сайт-приглашение.%20Меня%20интересует%20Пакет%202%20(4000%20руб)." target="_blank" class="btn">Выбрать</a>
         </div>
 
@@ -814,7 +870,6 @@
             <li>Вырезка фото</li>
             <li>Вступительный экран</li>
           </ul>
-          <!-- Автоматический текст для Телеграм -->
           <a href="https://t.me/fu1be?text=Здравствуйте,%20Егор!%20Хочу%20обсудить%20индивидуальный%20дизайн%20сайта-приглашения%20(Пакет%203)." target="_blank" class="btn">Обсудить</a>
         </div>
 
@@ -861,15 +916,12 @@
   </footer>
 
 <script>
-  // Скрипт FAQ
   document.querySelectorAll('.faq-question').forEach(item => {
     item.addEventListener('click', () => {
       const parent = item.parentElement;
-      // Закрываем остальные
       document.querySelectorAll('.faq-item').forEach(el => {
         if (el !== parent) el.classList.remove('active');
       });
-      // Переключаем текущий
       parent.classList.toggle('active');
     });
   });
