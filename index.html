@@ -310,11 +310,11 @@
     animation-play-state: paused; 
   }
 
-  /* Бровь (опустили пониже) */
+  /* Бровь (среднее значение 19px) */
   .phone-mockup::before {
     content: '';
     position: absolute;
-    top: 24px; /* Было 14px */
+    top: 19px; 
     left: 50%;
     transform: translateX(-50%);
     width: 72px;
@@ -606,7 +606,7 @@
       animation: none; 
     }
     .phone-mockup::before {
-      top: 20px; /* На мобильных тоже опустили */
+      top: 16px; /* Среднее значение для мобильных */
       width: 65px;
       height: 18px;
     }
