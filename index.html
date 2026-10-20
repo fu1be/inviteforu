@@ -270,23 +270,45 @@
     flex: 1 1 500px;
   }
 
-  /* --- БЛОК С ТЕЛЕФОНОМ --- */
-  .about-visual {
-    flex: 1 1 300px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+  /* Стили для красивого текста */
+  .about-content p {
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    color: #444;
+    margin-bottom: 15px;
   }
-
-  .about-visual::before {
-    content: '';
+  .about-content b {
+    color: var(--dark);
+    font-weight: 700;
+  }
+  
+  .features-list {
+    margin: 25px 0;
+    list-style: none;
+    background: var(--white);
+    padding: 25px 30px;
+    border-radius: 20px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+  }
+  .features-list li {
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 15px;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    color: #333;
+    line-height: 1.4;
+  }
+  .features-list li:last-child {
+    margin-bottom: 0;
+  }
+  .features-list li::before {
+    content: '✦';
     position: absolute;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(220, 53, 34, 0.15) 0%, rgba(255,255,255,0) 70%);
-    border-radius: 50%;
-    z-index: 0;
+    left: 0;
+    top: 0;
+    color: var(--red-bg);
+    font-size: 18px;
   }
 
   .phone-mockup {
@@ -369,12 +391,7 @@
   .about h2 span {
     color: var(--red-bg);
   }
-  .about p {
-    font-family: 'Inter', sans-serif;
-    font-size: 18px;
-    color: #444;
-    margin-bottom: 20px;
-  }
+  
   .domain-badge {
     display: inline-block;
     background: var(--white);
@@ -520,7 +537,9 @@
     margin-bottom: 15px;
     overflow: hidden;
     font-family: 'Inter', sans-serif;
+    transition: all 0.3s;
   }
+  
   .faq-question {
     padding: 25px 30px;
     font-weight: 700;
@@ -529,11 +548,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    transition: background 0.3s;
+    transition: color 0.3s;
   }
-  .faq-question:hover {
-    background: #fafafa;
+  
+  /* Активное состояние вопроса: красный текст */
+  .faq-item.active .faq-question {
+    color: var(--red-bg);
   }
+
   .faq-question::after {
     content: '+';
     font-size: 24px;
@@ -544,6 +566,7 @@
   .faq-item.active .faq-question::after {
     transform: rotate(45deg);
   }
+  
   .faq-answer {
     max-height: 0;
     overflow: hidden;
@@ -551,9 +574,12 @@
     padding: 0 30px;
     color: #555;
     font-size: 16px;
+    line-height: 1.6;
   }
+  
+  /* Симметричный отступ при открытии */
   .faq-item.active .faq-answer {
-    padding: 0 30px 25px;
+    padding: 10px 30px 25px 30px; /* 10px сверху для симметрии */
     max-height: 500px;
   }
 
@@ -600,13 +626,16 @@
       flex-direction: column-reverse;
       text-align: center;
     }
+    .features-list {
+      text-align: left;
+    }
     .phone-mockup {
       max-width: 240px;
       transform: none;
       animation: none; 
     }
     .phone-mockup::before {
-      top: 16px; /* Среднее значение для мобильных */
+      top: 16px; 
       width: 65px;
       height: 18px;
     }
@@ -704,9 +733,15 @@
   <section class="about" id="about">
     <div class="container about-inner">
       <div class="about-content">
-        <h2>INVITE <span>FOR U</span></h2>
-        <p>Меня зовут Егор. «Invite For U» — это не просто название, это мой подход. Я делаю приглашения, которые персонализированы под вас и ваших гостей.</p>
-        <p>Гости смогут ответить на анкету, а ответ моментально придет вам в Telegram-бот. Больше не нужно обзванивать всех и спрашивать: «Ты придешь?».</p>
+        <h2>ОБО <span>МНЕ</span></h2>
+        <p>Меня зовут <b>Егор</b>, и я создаю сайты-приглашения, которые заменяют скучные открытки и бесконечные рассылки в мессенджерах.</p>
+        
+        <ul class="features-list">
+          <li><b>Удобная анкета гостя.</b> Гости отвечают на вопросы, а все ответы автоматически собираются в <b>Google Таблицу</b>. Никаких потерянных сообщений — вся статистика под рукой.</li>
+          <li><b>Индивидуальный подход.</b> Я не использую шаблоны. Каждый сайт собирается под вашу историю и стиль праздника.</li>
+          <li><b>Быстрый запуск.</b> От идеи до готового сайта проходит от 2 до 5 дней.</li>
+        </ul>
+        
         <div class="domain-badge">Ваш сайт будет жить на: <b>имя.inviteforu.ru</b></div>
       </div>
       
@@ -728,12 +763,13 @@
       <h2 class="section-title">ВЫБЕРИ <span>ПАКЕТ</span></h2>
       <div class="services-grid">
         
+        <!-- Пакет 1 -->
         <div class="service-card">
           <h3>Пакет 1</h3>
-          <div class="price">4000 ₽</div>
+          <div class="price">3000 ₽</div>
           <ul>
             <li>Дата, время, место</li>
-            <li>Анкета гостя</li>
+            <li>Анкета гостя (выгрузка в Google Таблицы)</li>
             <li>Ваше фото (или несколько)</li>
             <li>Дресс-код</li>
             <li>Анимация</li>
@@ -742,16 +778,18 @@
             <li class="disabled">Интерактивная карта</li>
             <li class="disabled">Блок детали и пожелания</li>
           </ul>
-          <a href="https://t.me/fu1be" target="_blank" class="btn">Выбрать</a>
+          <!-- Автоматический текст для Телеграм -->
+          <a href="https://t.me/fu1be?text=Здравствуйте,%20Егор!%20Хочу%20заказать%20сайт-приглашение.%20Меня%20интересует%20Пакет%201%20(3000%20руб)." target="_blank" class="btn">Выбрать</a>
         </div>
 
+        <!-- Пакет 2 -->
         <div class="service-card popular">
           <div class="popular-badge">Хит продаж</div>
           <h3>Пакет 2</h3>
-          <div class="price">5500 ₽</div>
+          <div class="price">4000 ₽</div>
           <ul>
             <li>Дата, время, место</li>
-            <li>Анкета гостя</li>
+            <li>Анкета гостя (выгрузка в Google Таблицы)</li>
             <li>Ваше фото (или несколько)</li>
             <li>Дресс-код</li>
             <li>Анимация</li>
@@ -760,9 +798,11 @@
             <li>Интерактивная карта Яндекс</li>
             <li>Блок детали и пожелания</li>
           </ul>
-          <a href="https://t.me/fu1be" target="_blank" class="btn">Выбрать</a>
+          <!-- Автоматический текст для Телеграм -->
+          <a href="https://t.me/fu1be?text=Здравствуйте,%20Егор!%20Хочу%20заказать%20сайт-приглашение.%20Меня%20интересует%20Пакет%202%20(4000%20руб)." target="_blank" class="btn">Выбрать</a>
         </div>
 
+        <!-- Пакет 3 -->
         <div class="service-card">
           <h3>Пакет 3</h3>
           <div class="price">По запросу</div>
@@ -774,7 +814,8 @@
             <li>Вырезка фото</li>
             <li>Вступительный экран</li>
           </ul>
-          <a href="https://t.me/fu1be" target="_blank" class="btn">Обсудить</a>
+          <!-- Автоматический текст для Телеграм -->
+          <a href="https://t.me/fu1be?text=Здравствуйте,%20Егор!%20Хочу%20обсудить%20индивидуальный%20дизайн%20сайта-приглашения%20(Пакет%203)." target="_blank" class="btn">Обсудить</a>
         </div>
 
       </div>
@@ -788,7 +829,7 @@
 
       <div class="faq-item">
         <div class="faq-question">Как работает анкета гостя?</div>
-        <div class="faq-answer">Гость заходит на сайт, заполняет анкету (сможет ли он прийти, предпочтения по напиткам и т.д.), а ответ моментально поступает вам в бот Телеграм. Это очень удобно для подсчета гостей.</div>
+        <div class="faq-answer">Гость заходит на сайт, заполняет анкету (сможет ли он прийти, предпочтения по напиткам и т.д.), а все ответы моментально собираются в одну удобную <b>Google Таблицу</b>. Вы в любой момент видите, кто подтвердил присутствие.</div>
       </div>
 
       <div class="faq-item">
@@ -820,12 +861,15 @@
   </footer>
 
 <script>
+  // Скрипт FAQ
   document.querySelectorAll('.faq-question').forEach(item => {
     item.addEventListener('click', () => {
       const parent = item.parentElement;
+      // Закрываем остальные
       document.querySelectorAll('.faq-item').forEach(el => {
         if (el !== parent) el.classList.remove('active');
       });
+      // Переключаем текущий
       parent.classList.toggle('active');
     });
   });
