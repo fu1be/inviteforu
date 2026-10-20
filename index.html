@@ -16,15 +16,14 @@
     --light-gray: #f5f5f5;
   }
 
-  /* ПОДКЛЮЧЕНИЕ ШРИФТА ДЛЯ GITHUB/CLOUDFLARE */
+  /* ПОДКЛЮЧЕНИЕ ШРИФТА (теперь ищем Rostov.ttf) */
   @font-face {
     font-family: 'Rostov';
-    /* Путь к файлу в репозитории. Если файл в корне, напиши просто url('Rostov.woff2') */
-    src: url('fonts/Rostov.woff2') format('woff2'),
-         url('fonts/Rostov.woff') format('woff');
+    /* Если файл лежит в папке fonts, путь 'fonts/Rostov.ttf'. Если в корне - 'Rostov.ttf' */
+    src: url('fonts/Rostov.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-    font-display: swap; /* Текст виден сразу, шрифт подгружается на лету */
+    font-display: swap; 
   }
 
   * {
@@ -53,6 +52,7 @@
     padding: 0 20px;
   }
 
+  /* --- Главный экран --- */
   .hero-section {
     background-color: var(--red-bg);
     background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
@@ -64,6 +64,7 @@
     overflow: hidden;
   }
 
+  /* Навигация */
   .nav {
     position: absolute;
     top: 30px;
@@ -108,6 +109,7 @@
     opacity: 1 !important;
   }
 
+  /* Текст по центру */
   .hero-content {
     text-align: center;
     z-index: 2;
@@ -170,6 +172,7 @@
     to { opacity: 1; transform: translateY(0); }
   }
 
+  /* --- Бегущая строка (Маркиза) --- */
   .marquee-container {
     width: 100%;
     overflow: hidden;
@@ -245,6 +248,7 @@
     color: #888;
   }
 
+  /* Разные цвета для карточек */
   .mockup-mini:nth-child(1) .mockup-content { background: #e8f4f8; }
   .mockup-mini:nth-child(2) .mockup-content { background: #fdf5e6; }
   .mockup-mini:nth-child(3) .mockup-content { background: #f0e6ff; }
@@ -253,9 +257,10 @@
 
   @keyframes scroll {
     0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); } 
+    100% { transform: translateX(-50%); } /* Сдвиг ровно на половину (на ширину дубля) */
   }
 
+  /* --- Блок Обо мне --- */
   .about {
     background: var(--light-gray);
     padding: 100px 0;
@@ -316,6 +321,7 @@
     font-family: 'Inter', sans-serif;
   }
 
+  /* --- Пакеты --- */
   .services {
     padding: 100px 0;
   }
@@ -437,6 +443,7 @@
     color: var(--white);
   }
 
+  /* --- FAQ --- */
   .faq {
     background: var(--light-gray);
     padding: 100px 0;
@@ -484,6 +491,7 @@
     max-height: 500px;
   }
 
+  /* --- Футер --- */
   footer {
     background: var(--red-bg);
     color: var(--cream);
@@ -509,6 +517,7 @@
     color: var(--red-bg);
   }
 
+  /* --- Адаптив --- */
   @media (max-width: 768px) {
     .nav-inner {
       flex-direction: column;
@@ -540,7 +549,10 @@
 </head>
 <body>
 
+  <!-- Главный экран с красным фоном -->
   <section class="hero-section">
+    
+    <!-- Навигация -->
     <nav class="nav">
       <div class="nav-inner">
         <div class="nav-logo">Invite For U</div>
@@ -552,6 +564,7 @@
       </div>
     </nav>
 
+    <!-- Контент -->
     <div class="hero-content">
       <div class="hero-subtitle">а может быть...</div>
       <h1 class="hero-title">Invite<br>For U</h1>
@@ -559,8 +572,11 @@
       <a href="https://t.me/fu1be" target="_blank" class="btn-main">Создать приглашение</a>
     </div>
 
+    <!-- Бегущая строка с миниатюрами (все элементы продублированы для плавности) -->
     <div class="marquee-container">
       <div class="marquee-track">
+        
+        <!-- БЛОК 1 (Оригиналы) -->
         <div class="mockup-mini">
           <div class="mockup-header"><div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div></div>
           <div class="mockup-content"><div class="mockup-title">СВАДЬБА<br>АННЫ И МИШИ</div><div class="mockup-sub">12.08.2026 • Москва</div></div>
@@ -581,7 +597,8 @@
           <div class="mockup-header"><div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div></div>
           <div class="mockup-content"><div class="mockup-title">CORPORATE<br>PARTY</div><div class="mockup-sub">Новый год • Офис</div></div>
         </div>
-        <!-- Дубли -->
+
+        <!-- БЛОК 2 (Точные дубли для бесшовности) -->
         <div class="mockup-mini">
           <div class="mockup-header"><div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div></div>
           <div class="mockup-content"><div class="mockup-title">СВАДЬБА<br>АННЫ И МИШИ</div><div class="mockup-sub">12.08.2026 • Москва</div></div>
@@ -594,10 +611,21 @@
           <div class="mockup-header"><div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div></div>
           <div class="mockup-content"><div class="mockup-title">КОНЦЕРТ<br>ГРУППЫ</div><div class="mockup-sub">15.09 • Клуб "Космос"</div></div>
         </div>
+        <div class="mockup-mini">
+          <div class="mockup-header"><div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div></div>
+          <div class="mockup-content"><div class="mockup-title">ВЫПУСКНОЙ<br>2026</div><div class="mockup-sub">Школа №1234</div></div>
+        </div>
+        <div class="mockup-mini">
+          <div class="mockup-header"><div class="mockup-dot"></div><div class="mockup-dot"></div><div class="mockup-dot"></div></div>
+          <div class="mockup-content"><div class="mockup-title">CORPORATE<br>PARTY</div><div class="mockup-sub">Новый год • Офис</div></div>
+        </div>
+
       </div>
     </div>
+
   </section>
 
+  <!-- Блок Обо мне -->
   <section class="about" id="about">
     <div class="container about-inner">
       <div class="about-content">
@@ -610,10 +638,12 @@
     </div>
   </section>
 
+  <!-- Пакеты услуг -->
   <section class="services" id="services">
     <div class="container">
       <h2 class="section-title">ВЫБЕРИ <span>ПАКЕТ</span></h2>
       <div class="services-grid">
+        
         <div class="service-card">
           <h3>Пакет 1</h3>
           <div class="price">4000 ₽</div>
@@ -630,6 +660,7 @@
           </ul>
           <a href="https://t.me/fu1be" target="_blank" class="btn">Выбрать</a>
         </div>
+
         <div class="service-card popular">
           <div class="popular-badge">Хит продаж</div>
           <h3>Пакет 2</h3>
@@ -647,6 +678,7 @@
           </ul>
           <a href="https://t.me/fu1be" target="_blank" class="btn">Выбрать</a>
         </div>
+
         <div class="service-card">
           <h3>Пакет 3</h3>
           <div class="price">По запросу</div>
@@ -660,25 +692,31 @@
           </ul>
           <a href="https://t.me/fu1be" target="_blank" class="btn">Обсудить</a>
         </div>
+
       </div>
     </div>
   </section>
 
+  <!-- FAQ -->
   <section class="faq" id="faq">
     <div class="container">
       <h2 class="section-title">ЧАСТЫЕ <span>ВОПРОСЫ</span></h2>
+
       <div class="faq-item">
         <div class="faq-question">Как работает анкета гостя?</div>
         <div class="faq-answer">Гость заходит на сайт, заполняет анкету (сможет ли он прийти, предпочтения по напиткам и т.д.), а ответ моментально поступает вам в бот Телеграм. Это очень удобно для подсчета гостей.</div>
       </div>
+
       <div class="faq-item">
         <div class="faq-question">Где будет находиться сайт?</div>
         <div class="faq-answer">Сайт будет работать на моем домене <b>inviteforu.ru</b>. Ссылка для гостей будет выглядеть так: <b>имена.inviteforu.ru</b>. Сайт будет работать 1 год.</div>
       </div>
+
       <div class="faq-item">
         <div class="faq-question">Как происходит оплата и сроки?</div>
         <div class="faq-answer">Предоплата 50%, остаток по факту. Создание занимает от 2 до 5 дней (в зависимости от пакета) с момента получения всей информации.</div>
       </div>
+
       <div class="faq-item">
         <div class="faq-question">Можно ли что-то поменять?</div>
         <div class="faq-answer">Да, в стоимость входит изменение текста, фото, дресс-кода и вопросов в анкете. Если нужны сложные изменения (индивидуальный дизайн, музыка, видео) — это обсуждается отдельно в Пакете 3.</div>
@@ -686,6 +724,7 @@
     </div>
   </section>
 
+  <!-- Футер -->
   <footer id="contacts">
     <div class="container">
       <h2>ЖДУ ВАС!</h2>
@@ -697,6 +736,7 @@
   </footer>
 
 <script>
+  // Скрипт для работы FAQ
   document.querySelectorAll('.faq-question').forEach(item => {
     item.addEventListener('click', () => {
       const parent = item.parentElement;
@@ -707,5 +747,6 @@
     });
   });
 </script>
+
 </body>
 </html>
