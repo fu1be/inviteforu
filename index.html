@@ -270,7 +270,7 @@
     flex: 1 1 500px;
   }
 
-  /* --- НОВЫЙ БЛОК С ТЕЛЕФОНОМ (БЕЗ ОБРЕЗКИ) --- */
+  /* --- БЛОК С ТЕЛЕФОНОМ --- */
   .about-visual {
     flex: 1 1 300px;
     display: flex;
@@ -289,23 +289,18 @@
     z-index: 0;
   }
 
-  /* Контейнер, который подстраивается под размер картинки */
   .phone-mockup {
     position: relative;
     z-index: 1;
-    /* Рамка телефона */
     background: #000;
     padding: 8px;
     border-radius: 42px;
-    /* Тень и обводка */
     box-shadow: 
       0 25px 50px rgba(0,0,0,0.3),
       inset 0 0 0 1px #444;
-    /* 3D наклон */
     transform: rotateY(-10deg) rotateX(5deg);
     animation: float 6s ease-in-out infinite;
     transition: transform 0.5s ease;
-    /* Ограничиваем максимальную ширину телефона */
     max-width: 280px;
     width: 100%;
   }
@@ -315,11 +310,11 @@
     animation-play-state: paused; 
   }
 
-  /* Бровь */
+  /* Бровь (опустили пониже) */
   .phone-mockup::before {
     content: '';
     position: absolute;
-    top: 14px; 
+    top: 24px; /* Было 14px */
     left: 50%;
     transform: translateX(-50%);
     width: 72px;
@@ -343,10 +338,9 @@
     z-index: 11;
   }
 
-  /* Сама картинка внутри */
   .phone-screen {
     width: 100%;
-    height: auto; /* Высота подстраивается под картинку */
+    height: auto;
     border-radius: 34px;
     overflow: hidden;
     display: block;
@@ -355,9 +349,8 @@
 
   .phone-screen img {
     width: 100%;
-    height: auto; /* Картинка задает высоту всему телефону */
+    height: auto;
     display: block;
-    /* Теперь картинка не обрезается! */
   }
 
   @keyframes float {
@@ -613,7 +606,7 @@
       animation: none; 
     }
     .phone-mockup::before {
-      top: 12px;
+      top: 20px; /* На мобильных тоже опустили */
       width: 65px;
       height: 18px;
     }
