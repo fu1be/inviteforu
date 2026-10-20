@@ -123,11 +123,28 @@
 
   .hero-title {
     color: var(--cream);
-    /* Шрифт адаптируется, чтобы слово ПРИГЛАШЕНИЕ влезало в экран */
-    font-size: clamp(40px, 8vw, 90px); 
-    line-height: 1.1; 
-    letter-spacing: -1px; 
-    margin-bottom: 25px;
+    font-size: clamp(40px, 9vw, 110px); 
+    line-height: 1; 
+    letter-spacing: 1px; 
+    margin-bottom: 10px;
+  }
+
+  /* НОВЫЙ ПОДЗАГОЛОВОК КАК НА СКРИНШОТЕ */
+  .hero-subtitle-accent {
+    color: var(--cream);
+    font-size: clamp(20px, 4vw, 48px);
+    margin-bottom: 30px;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .hero-subtitle-accent::before,
+  .hero-subtitle-accent::after {
+    content: '—';
+    opacity: 0.7;
   }
 
   .hero-desc {
@@ -545,7 +562,12 @@
       padding-top: 140px;
     }
     .hero-title {
-      font-size: clamp(32px, 9vw, 50px); /* Уменьшаем на мобилках, чтобы влезало */
+      font-size: clamp(32px, 10vw, 50px); 
+    }
+    .hero-subtitle-accent {
+      font-size: 16px;
+      letter-spacing: 1px;
+      gap: 10px;
     }
     .about-inner {
       flex-direction: column-reverse;
@@ -586,8 +608,11 @@
 
     <!-- Контент -->
     <div class="hero-content">
-      <!-- Слово "Создаю" убрано, текст теперь сразу по делу -->
-      <h1 class="hero-title">Invite For U<br>Сайт-приглашение</h1>
+      <!-- Сделано в одну строку без Invite For U -->
+      <h1 class="hero-title">Сайт-приглашение</h1>
+      <!-- Подзаголовок с черточками как на скриншоте -->
+      <div class="hero-subtitle-accent">на ваше торжество</div>
+      
       <p class="hero-desc">Уникальные сайты для свадеб, дней рождения и концертов. Гости смогут ответить на анкету, а вы получите все ответы в удобной Google Таблице.</p>
       <a href="https://t.me/fu1be" target="_blank" class="btn-main">Создать приглашение</a>
     </div>
@@ -651,7 +676,6 @@
       <div class="about-content">
         <h2>INVITE <span>FOR U</span></h2>
         <p>Меня зовут Егор. «Invite For U» — это не просто название, это мой подход. Я делаю приглашения, которые персонализированы под вас и ваших гостей.</p>
-        <!-- Изменил текст про Telegram на Google Таблицы -->
         <p>Гости смогут ответить на анкету, а все ответы моментально попадут в удобную Google Таблицу. Больше не нужно обзванивать всех и спрашивать: «Ты придешь?».</p>
         <div class="domain-badge">Ваш сайт будет жить на: <b>имя.inviteforu.ru</b></div>
       </div>
@@ -659,7 +683,6 @@
       <!-- ТЕЛЕФОН С ТВОЕЙ КАРТИНКОЙ -->
       <div class="about-visual">
         <div class="phone-frame">
-          <!-- ВАЖНО: Загрузи картинку на GitHub и укажи тут ее имя. -->
           <img src="iphone-mockup.jpg" alt="Пример сайта-приглашения" class="phone-screen-img">
         </div>
       </div>
