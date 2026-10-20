@@ -16,11 +16,15 @@
     --light-gray: #f5f5f5;
   }
 
+  /* ПОДКЛЮЧЕНИЕ ШРИФТА ДЛЯ GITHUB/CLOUDFLARE */
   @font-face {
     font-family: 'Rostov';
-    src: local('Rostov'), local('Rostov-Regular'), local('Rostov Bold');
+    /* Путь к файлу в репозитории. Если файл в корне, напиши просто url('Rostov.woff2') */
+    src: url('fonts/Rostov.woff2') format('woff2'),
+         url('fonts/Rostov.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+    font-display: swap; /* Текст виден сразу, шрифт подгружается на лету */
   }
 
   * {
@@ -126,7 +130,6 @@
     font-family: 'Inter', sans-serif;
   }
 
-  /* ИСПРАВЛЕННЫЙ ЗАГОЛОВОК (буквы ближе) */
   .hero-title {
     color: var(--cream);
     font-size: clamp(50px, 10vw, 110px); 
