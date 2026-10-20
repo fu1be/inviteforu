@@ -118,7 +118,7 @@
     flex-grow: 1;
   }
 
-  /* --- НОВЫЙ ЗАГОЛОВОК (В ТРИ СТРОКИ) --- */
+  /* --- ЗАГОЛОВОК (3 СТРОКИ) --- */
   .hero-title {
     color: var(--cream);
     display: flex;
@@ -129,14 +129,14 @@
     margin-top: 10px;
   }
 
-  /* Маленькая фраза сверху */
+  /* Маленькая фраза сверху (теперь Rostov и меньше) */
   .hero-title .line-top {
-    font-size: clamp(16px, 2.5vw, 28px);
-    letter-spacing: 3px;
-    margin-bottom: 15px;
+    font-size: clamp(14px, 1.8vw, 20px); /* Уменьшили размер */
+    letter-spacing: 2px;
+    margin-bottom: 10px;
     text-transform: uppercase;
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
+    font-family: 'Rostov', 'Inter', sans-serif; /* Сменили на Rostov */
+    font-weight: normal;
     opacity: 0.9;
   }
 
@@ -654,7 +654,7 @@
     }
     /* Адаптив для нового заголовка */
     .hero-title .line-top {
-      font-size: 14px;
+      font-size: 12px; /* Еще меньше на мобилках */
     }
     .hero-title .line-main {
       font-size: 38px; 
@@ -717,7 +717,7 @@
     <!-- Контент -->
     <div class="hero-content">
       
-      <!-- НОВЫЙ ОФОРМЛЕННЫЙ ЗАГОЛОВОК (3 строки) -->
+      <!-- ОФОРМЛЕННЫЙ ЗАГОЛОВОК -->
       <h1 class="hero-title">
         <span class="line-top">Ваш праздник начинается с</span>
         <span class="line-main">Сайт-приглашение</span>
