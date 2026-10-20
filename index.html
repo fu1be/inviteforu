@@ -39,7 +39,6 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* Убрали глобальный uppercase для заголовков, чтобы лучше управлять текстом */
   h1, h2, h3, .nav-logo {
     font-weight: normal; 
   }
@@ -119,61 +118,46 @@
     flex-grow: 1;
   }
 
-  .hero-subtitle {
-    color: var(--cream);
-    font-size: clamp(16px, 2vw, 24px);
-    font-weight: 400;
-    margin-bottom: 15px;
-    opacity: 0.9;
-    letter-spacing: 0.5px;
-    font-family: 'Inter', sans-serif;
-  }
-
-  /* --- НОВЫЙ КРАСИВЫЙ ЗАГОЛОВОК --- */
+  /* --- НОВЫЙ ЗАГОЛОВОК (В ДВЕ СТРОКИ) --- */
   .hero-title {
     color: var(--cream);
     display: flex;
     flex-direction: column;
     align-items: center;
-    line-height: 1.05;
+    line-height: 1.1;
     margin-bottom: 30px;
+    margin-top: 20px;
   }
 
-  .hero-title .line-top {
-    font-size: clamp(24px, 3.5vw, 42px);
-    letter-spacing: 3px;
-    margin-bottom: 5px;
-    text-transform: uppercase;
-    font-family: 'Inter', sans-serif; /* Для верхней строки используем Inter, чтобы было аккуратно */
-    font-weight: 500;
-  }
-
+  /* Первая строка: САЙТ-ПРИГЛАШЕНИЕ */
   .hero-title .line-main {
-    font-size: clamp(60px, 11vw, 140px);
-    letter-spacing: -1px;
+    font-size: clamp(45px, 8.5vw, 120px); /* Уменьшил максимальный размер, чтобы влезло в одну строку */
+    letter-spacing: 1px;
     text-transform: uppercase;
+    white-space: nowrap; /* Запрещаем перенос строки */
   }
 
+  /* Вторая строка: НА ВАШЕ ТОРЖЕСТВО */
   .hero-title .line-bottom {
-    font-size: clamp(30px, 5.5vw, 70px);
-    letter-spacing: 0px;
+    font-size: clamp(24px, 4.5vw, 60px);
+    letter-spacing: 2px;
     text-transform: uppercase;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 15px;
-    margin-top: 5px;
+    gap: 20px;
+    margin-top: 10px;
   }
 
-  /* Красивое подчеркивание для последней строки */
+  /* Декоративные линии для второй строки */
   .hero-title .line-bottom::before,
   .hero-title .line-bottom::after {
     content: '';
     display: block;
-    width: clamp(30px, 6vw, 100px);
+    width: clamp(30px, 8vw, 120px);
     height: 3px;
     background-color: var(--cream);
-    opacity: 0.7;
+    opacity: 0.8;
   }
 
   .hero-desc {
@@ -658,14 +642,11 @@
       padding-top: 140px;
     }
     /* Адаптив для нового заголовка */
-    .hero-title .line-top {
-      font-size: 18px;
-    }
     .hero-title .line-main {
-      font-size: 60px;
+      font-size: 38px; /* Уменьшаем на мобильных, чтобы влезло в одну строку */
     }
     .hero-title .line-bottom {
-      font-size: 24px;
+      font-size: 18px;
       gap: 10px;
     }
     .hero-title .line-bottom::before,
@@ -721,11 +702,9 @@
 
     <!-- Контент -->
     <div class="hero-content">
-      <div class="hero-subtitle">а может быть...</div>
       
-      <!-- НОВЫЙ ОФОРМЛЕННЫЙ ЗАГОЛОВОК -->
+      <!-- НОВЫЙ ОФОРМЛЕННЫЙ ЗАГОЛОВОК (2 строки) -->
       <h1 class="hero-title">
-        <span class="line-top">Создаю</span>
         <span class="line-main">Сайт-приглашение</span>
         <span class="line-bottom">На ваше торжество</span>
       </h1>
